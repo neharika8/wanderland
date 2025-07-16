@@ -1,0 +1,40 @@
+/* Container for the star rating */
+.starability-basic {
+  display: flex;
+  flex-direction: row-reverse; /* Makes stars appear right to left */
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 2rem;
+  width: fit-content;
+  margin-top: 0.5rem;
+}
+
+/* Hide radio buttons */
+.starability-basic input[type="radio"] {
+  display: none;
+}
+
+/* Default unselected star */
+.starability-basic label {
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+/* Highlight all stars up to the one being hovered */
+.starability-basic label:hover,
+.starability-basic label:hover ~ label {
+  color: #ffdb70;
+}
+
+/* Highlight selected stars */
+.starability-basic input[type="radio"]:checked ~ label {
+  color: #ffc107;
+}
+
+/* Focus accessibility */
+.starability-basic input[type="radio"]:focus + label {
+  outline: 2px solid #666;
+  outline-offset: 2px;
+}
