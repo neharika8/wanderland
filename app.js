@@ -2,7 +2,7 @@ if(process.env.NODE_ENV != 'production'){
     require('dotenv').config();
 }
 
-require('dotenv').config();
+
 console.log(process.env.SECRET);
 
 const express = require("express");
@@ -27,7 +27,7 @@ const multer = require("multer");
 const {storage} = require("./cloudConfig.js");
 const upload = multer({ storage });
 
-//const dbUrl = process.env.ATLASDB_URL;
+const dbUrl = process.env.ATLASDB_URL;
 
 
 main()
@@ -271,7 +271,8 @@ app.delete("/listings/:id/reviews/:reviewId",isLoggedIn,isReviewAuthor,async(req
     //res.send("successful testing");
 //});
 
+const PORT = process.env.PORT || 8080;
 
-app.listen(8080,()=>{
-    console.log("server is listening to port 8080");
+app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`);
 });
